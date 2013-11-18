@@ -10,6 +10,7 @@
 		469DDF1D1839DE7800678032 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 469DDF1C1839DE7800678032 /* Foundation.framework */; };
 		469DDF201839DE7800678032 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 469DDF1F1839DE7800678032 /* main.m */; };
 		469DDF241839DE7800678032 /* AdaptiveSimpsonsRule.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 469DDF231839DE7800678032 /* AdaptiveSimpsonsRule.1 */; };
+		469DDF2C1839DE9900678032 /* AdaptiveSimpsonsRule.m in Sources */ = {isa = PBXBuildFile; fileRef = 469DDF2B1839DE9900678032 /* AdaptiveSimpsonsRule.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +32,8 @@
 		469DDF1F1839DE7800678032 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		469DDF221839DE7800678032 /* AdaptiveSimpsonsRule-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AdaptiveSimpsonsRule-Prefix.pch"; sourceTree = "<group>"; };
 		469DDF231839DE7800678032 /* AdaptiveSimpsonsRule.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = AdaptiveSimpsonsRule.1; sourceTree = "<group>"; };
+		469DDF2A1839DE9900678032 /* AdaptiveSimpsonsRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdaptiveSimpsonsRule.h; sourceTree = "<group>"; };
+		469DDF2B1839DE9900678032 /* AdaptiveSimpsonsRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdaptiveSimpsonsRule.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +77,8 @@
 			isa = PBXGroup;
 			children = (
 				469DDF1F1839DE7800678032 /* main.m */,
-				469DDF231839DE7800678032 /* AdaptiveSimpsonsRule.1 */,
+				469DDF2A1839DE9900678032 /* AdaptiveSimpsonsRule.h */,
+				469DDF2B1839DE9900678032 /* AdaptiveSimpsonsRule.m */,
 				469DDF211839DE7800678032 /* Supporting Files */,
 			);
 			path = AdaptiveSimpsonsRule;
@@ -83,6 +87,7 @@
 		469DDF211839DE7800678032 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				469DDF231839DE7800678032 /* AdaptiveSimpsonsRule.1 */,
 				469DDF221839DE7800678032 /* AdaptiveSimpsonsRule-Prefix.pch */,
 			);
 			name = "Supporting Files";
@@ -140,6 +145,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				469DDF201839DE7800678032 /* main.m in Sources */,
+				469DDF2C1839DE9900678032 /* AdaptiveSimpsonsRule.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
