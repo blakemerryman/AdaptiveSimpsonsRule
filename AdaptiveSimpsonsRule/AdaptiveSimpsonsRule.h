@@ -9,16 +9,21 @@
 #import <Foundation/Foundation.h>
 
 @interface AdaptiveSimpsonsRule : NSObject
+#pragma mark - Public Properties:
 @property(nonatomic)NSNumber* ptA;      // The start of the interval to approximate using ASR.
 @property(nonatomic)NSNumber* ptB;      // The end of the interval to approximate using ASR.
 @property(nonatomic)NSNumber* eps;      // The error tolerance.
-@property(nonatomic)NSNumber* result;   // The result of the approximation using ASR.
 
--(id)init;                                      // Default init method.
+#pragma mark - Public Methods Interface:
+// Default init method.
+-(id)init;
+
+// Custom init method to set start point, end point, and error tolerance.
 -(id)initWithStart:(NSNumber*)ptA
                End:(NSNumber*)ptB
-        AndEpsilon:(NSNumber*)eps;              // Custom initWith method.
--(id)recursiveAdaptiveSimpsonsRule;             // Recursive-adaptive logic method.
--(NSNumber*)theFunctionAtAPoint:(NSNumber*)pt;  // The function being approximated by ASR.
--(NSNumber*)simpsonsRule;                       // Simpson's Rule.
+        AndEpsilon:(NSNumber*)eps;
+
+// Method that returns the approximation of the integral found using ASR.
+-(NSNumber*)evaluateAdaptiveSimpsonsMethod;
+
 @end
