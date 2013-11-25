@@ -15,8 +15,8 @@ int main(int argc, const char * argv[])
 {
     @autoreleasepool {
         
-        NSNumber* pointA = [NSNumber numberWithDouble: 0.0  ];
-        NSNumber* pointB = [NSNumber numberWithDouble: M_PI ];
+        NSNumber* pointA = [NSNumber numberWithDouble: 0 ];
+        NSNumber* pointB = [NSNumber numberWithDouble: 4 ];
         NSNumber* error  = [NSNumber numberWithDouble: 1 * pow(10, -10) ];
         
         AdaptiveSimpsonsRule* ASR = [[AdaptiveSimpsonsRule alloc] initWithPtA:pointA

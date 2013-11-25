@@ -144,8 +144,19 @@
 
 -(NSNumber*)theFunctionValueAtPoint:(NSNumber*)x
 {
+    // ERROR CHECK: If function cannot handle certain operations (e.g. dividing by zero) test for
+    // that here, print error message, and quit program. Must be updated along with the function
+    // definition. Function MAY NOT NEED this error checking feature.
+    
+    /*
+    if ( fabs([x doubleValue]) < (1*pow(10,-10)) )
+    {
+        NSLog(@"ERROR... Attempted to divide by zero."); exit(0);
+    }
+     */
+    
     // Manually coded function definition.
-    NSNumber* functionValueAtX = [NSNumber numberWithDouble: sin([x doubleValue]) ];
+    NSNumber* functionValueAtX = [NSNumber numberWithDouble: cos(pow([x doubleValue], 2)) ];
     
     // Returns the function value at point.
     return functionValueAtX;
