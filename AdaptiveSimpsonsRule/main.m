@@ -3,7 +3,15 @@
 //  AdaptiveSimpsonsRule
 //
 //  Created by Blake Merryman on 11/17/13.
-//  Copyright (c) 2013 Blake Merryman. All rights reserved.
+//  Middle Tennessee State University, MATH 4310, Programming Assignment 2
+//  Due by Tuesday, 26 November 2013.
+//
+//  Description of Program:
+//  This is a command line tool designed to approximate the integral of a function along a given interval
+//  using the method of Simpson’s Rule adaptively. The function definition is hard coded into the
+//  implementation file and the interval’s start & stop points are entered into the function main manually.
+//  The error tolerance that is used to test whether the current approximation is good enough is also
+//  entered manually. The approximation value is outputted to the terminal via NSLog.
 //
 
 #import <Foundation/Foundation.h>
@@ -15,17 +23,22 @@ int main(int argc, const char * argv[])
 {
     @autoreleasepool {
         
-        NSNumber* pointA = [NSNumber numberWithDouble: 0 ];
-        NSNumber* pointB = [NSNumber numberWithDouble: 4 ];
-        NSNumber* error  = [NSNumber numberWithDouble: 1 * pow(10, -10) ];
+        NSNumber* pointA = [NSNumber numberWithDouble: 0 ];                 // Interval starting point value.
+        NSNumber* pointB = [NSNumber numberWithDouble: 4 ];                 // Interval stopping point value.
+        NSNumber* error  = [NSNumber numberWithDouble: 1 * pow(10, -10) ];  // Error tolerance for ASR.
         
+        // Allocating & intializing ASR object with start, stop, and error tolerance.
         AdaptiveSimpsonsRule* ASR = [[AdaptiveSimpsonsRule alloc] initWithPtA:pointA
                                                                       WithPtB:pointB
                                                                    AndEpsilon:error];
         
+        // ASR sends a message to approximate the integral of the function
+        // (whose definition is hard coded in implementation file).
+        // NSNumber object stores the approximation.
         NSNumber* approximation = [ASR approximateUsingAdaptiveSimpsonsRule];
-        NSLog(@"Approximation of f(x) is %f.",[approximation doubleValue]);
         
+        // Log that displays the approximation's value to the terminal.
+        NSLog(@"Approximation of f(x) is %f.",[approximation doubleValue]);
     }
     return 0;
 }

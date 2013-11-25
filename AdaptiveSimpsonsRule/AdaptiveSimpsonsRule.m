@@ -3,7 +3,15 @@
 //  AdaptiveSimpsonsRule
 //
 //  Created by Blake Merryman on 11/17/13.
-//  Copyright (c) 2013 Blake Merryman. All rights reserved.
+//  Middle Tennessee State University, MATH 4310, Programming Assignment 2
+//  Due by Tuesday, 26 November 2013.
+//
+//  Description of Program:
+//  This is a command line tool designed to approximate the integral of a function along a given interval
+//  using the method of Simpson’s Rule adaptively. The function definition is hard coded into the
+//  implementation file and the interval’s start & stop points are entered into the function main manually.
+//  The error tolerance that is used to test whether the current approximation is good enough is also
+//  entered manually. The approximation value is outputted to the terminal via NSLog.
 //
 
 #import "AdaptiveSimpsonsRule.h"
@@ -32,20 +40,23 @@
 
 @implementation AdaptiveSimpsonsRule
 
+//
 - (id)init
 {
     self = [super init];
-    if (self) {
-    }
+    if (self) { /**/ }
     return self;
 }
 
--(id)initWithPtA:(NSNumber *)ptA WithPtB:(NSNumber *)ptB AndEpsilon:(NSNumber *)eps
+-(id)initWithPtA:(NSNumber *)ptA
+         WithPtB:(NSNumber *)ptB
+      AndEpsilon:(NSNumber *)eps
 {
     self = [super init];
-    if (self) {
+    if (self)
+    {
         // Initializes & allocates memory for public properties.
-        // Sets values based on incoming values.
+        // Sets property values to received values.
         self.pointA = [[NSNumber alloc] initWithDouble:[ptA doubleValue]];
         self.pointB = [[NSNumber alloc] initWithDouble:[ptB doubleValue]];
         self.error  = [[NSNumber alloc] initWithDouble:[eps doubleValue]];
