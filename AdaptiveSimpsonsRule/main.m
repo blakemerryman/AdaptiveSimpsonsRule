@@ -17,8 +17,6 @@
 #import <Foundation/Foundation.h>
 #import "AdaptiveSimpsonsRule.h"
 
-
-
 int main(int argc, const char * argv[])
 {
     @autoreleasepool {
@@ -27,12 +25,12 @@ int main(int argc, const char * argv[])
         NSNumber* pointB = [NSNumber numberWithDouble: 4 ];                 // Interval stopping point value.
         NSNumber* error  = [NSNumber numberWithDouble: 1 * pow(10, -10) ];  // Error tolerance for ASR.
         
-        // Allocating & intializing ASR object with start, stop, and error tolerance.
+        // Allocate & intialize ASR object with start, stop, and error tolerance.
         AdaptiveSimpsonsRule* ASR = [[AdaptiveSimpsonsRule alloc] initWithPtA:pointA
                                                                       WithPtB:pointB
                                                                    AndEpsilon:error];
         
-        // ASR sends a message to approximate the integral of the function
+        // ASR object sends message to approximate the integral of the function
         // (whose definition is hard coded in implementation file).
         // NSNumber object stores the approximation.
         NSNumber* approximation = [ASR approximateUsingAdaptiveSimpsonsRule];
