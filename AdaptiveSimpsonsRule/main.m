@@ -7,14 +7,24 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AdaptiveSimpsonsRule.h"
+
+
 
 int main(int argc, const char * argv[])
 {
-
     @autoreleasepool {
         
-        // insert code here...
-        NSLog(@"Hello, World!");
+        NSNumber* pointA = [NSNumber numberWithDouble: 0.0  ];
+        NSNumber* pointB = [NSNumber numberWithDouble: M_PI ];
+        NSNumber* error  = [NSNumber numberWithDouble: 1 * pow(10, -10) ];
+        
+        AdaptiveSimpsonsRule* ASR = [[AdaptiveSimpsonsRule alloc] initWithPtA:pointA
+                                                                      WithPtB:pointB
+                                                                   AndEpsilon:error];
+        
+        NSNumber* approximation = [ASR approximateUsingAdaptiveSimpsonsRule];
+        NSLog(@"Approximation of f(x) is %f.",[approximation doubleValue]);
         
     }
     return 0;

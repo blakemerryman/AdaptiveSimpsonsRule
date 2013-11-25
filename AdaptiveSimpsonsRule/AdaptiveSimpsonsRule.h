@@ -10,20 +10,16 @@
 
 @interface AdaptiveSimpsonsRule : NSObject
 #pragma mark - Public Properties:
-@property(nonatomic)NSNumber* ptA;      // The start of the interval to approximate using ASR.
-@property(nonatomic)NSNumber* ptB;      // The end of the interval to approximate using ASR.
-@property(nonatomic)NSNumber* eps;      // The error tolerance.
+@property(nonatomic)NSNumber* pointA;      // The start of the interval to approximate using ASR.
+@property(nonatomic)NSNumber* pointB;      // The end of the interval to approximate using ASR.
+@property(nonatomic)NSNumber* error;       // The error tolerance.
 
 #pragma mark - Public Methods Interface:
-// Default init method.
+// Initialization methods. Sets the interval start, end, and error tolerance.
 -(id)init;
-
-// Custom init method to set start point, end point, and error tolerance.
--(id)initWithStart:(NSNumber*)ptA
-               End:(NSNumber*)ptB
-        AndEpsilon:(NSNumber*)eps;
+-(id)initWithPtA:(NSNumber*)ptA WithPtB:(NSNumber*)ptB AndEpsilon:(NSNumber*)eps;
 
 // Method that returns the approximation of the integral found using ASR.
--(NSNumber*)evaluateAdaptiveSimpsonsMethod;
+-(NSNumber*)approximateUsingAdaptiveSimpsonsRule;
 
 @end
