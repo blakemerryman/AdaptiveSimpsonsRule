@@ -18,6 +18,7 @@
 #import <Foundation/Foundation.h>
 
 @interface AdaptiveSimpsonsRule : NSObject
+
 #pragma mark - Public Properties:
 @property(nonatomic)NSNumber* pointA;   // The start of the integral to approximate using ASR.
 @property(nonatomic)NSNumber* pointB;   // The end of the integral to approximate using ASR.
