@@ -162,20 +162,20 @@
     NSNumber* x_1 = [NSNumber numberWithDouble: ([x_0 doubleValue] + [x_2 doubleValue]) / 2.0];
     
     // Calculates the leading h/6 term.
-    NSNumber* hOver6 = [NSNumber numberWithDouble: fabs([x_0 doubleValue] - [x_2 doubleValue]) / 6.0];
+    NSNumber* hOVER6 = [NSNumber numberWithDouble: fabs([x_0 doubleValue] - [x_2 doubleValue]) / 6.0];
     
-    // Evaluates the function value at point x_0.
+    // Evaluates the function value at point x_0 (interval start).
     NSNumber* functAtPntX_0 = [self theFunctionValueAtPoint:[NSNumber numberWithDouble:[x_0 doubleValue]]];
     
-    // Evaluates the function value at point x_1.
+    // Evaluates the function value at point x_1 (interval midpt).
     NSNumber* functAtPntX_1 = [self theFunctionValueAtPoint:[NSNumber numberWithDouble:[x_1 doubleValue]]];
     
-    // Evaluates the function value at point x_2.
+    // Evaluates the function value at point x_2 (interval stop).
     NSNumber* functAtPntX_2 = [self theFunctionValueAtPoint:[NSNumber numberWithDouble:[x_2 doubleValue]]];
     
     // Calculates the approximation of the integral between points x_0 and x_2.
     NSNumber* approximation = [NSNumber numberWithDouble:
-                                                       [hOver6 doubleValue] * ([functAtPntX_0 doubleValue]
+                                                       [hOVER6 doubleValue] * ([functAtPntX_0 doubleValue]
                                                        + 4.0 * [functAtPntX_1 doubleValue]
                                                        + [functAtPntX_2 doubleValue])];
     
