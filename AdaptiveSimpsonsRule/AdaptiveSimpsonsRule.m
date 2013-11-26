@@ -40,7 +40,11 @@
 
 @implementation AdaptiveSimpsonsRule
 
-//
+/*
+ METHOD: init
+ This is the default initializater mandated by Objective C objects that inherit from
+ the NSObject (foundation object).
+ */
 - (id)init
 {
     self = [super init];
@@ -48,6 +52,11 @@
     return self;
 }
 
+/*
+ METHOD: initWithPtA: WithPtB: AndEpsilon:
+ This is a custom intializer that allocates, intializes, and sets the values
+ for the object's properties.
+ */
 -(id)initWithPtA:(NSNumber *)ptA
          WithPtB:(NSNumber *)ptB
       AndEpsilon:(NSNumber *)eps
@@ -64,43 +73,54 @@
     return self;
 }
 
+/*
+ METHOD: approximateUsingAdaptiveSimpsonsRule
+ This method sets the recursive logic of ASR into motion and returns the value to ASR object.
+ */
 -(NSNumber*)approximateUsingAdaptiveSimpsonsRule
 {
+    // Calculates the initial approximation by ASR.
     NSNumber* initialApproximation = [self simpsonsRuleWithStart:self.pointA
                                                        AndFinish:self.pointB];
     
+    // Using recursive logic, calculates the final approximation by ASR.
     NSNumber* finalApproximation = [self recursiveASRfromPt:self.pointA
                                                        ToPt:self.pointB
                                                     WithEps:self.error
                                             AndPreviousCalc:initialApproximation];
     
+    // Returns the final approximation.
     return finalApproximation;
 }
 
 #pragma mark - Private Method Implementations:
 
+/*
+ METHOD: recursiveASRfromPt: ToPt: WithEps: AndPreviousCalc:
+ 
+ */
 -(NSNumber*)recursiveASRfromPt:(NSNumber*)pt0
                           ToPt:(NSNumber*)pt2
                        WithEps:(NSNumber*)eps
-               AndPreviousCalc:(NSNumber*)previousCalculation;
+               AndPreviousCalc:(NSNumber*)previousCalculation
 {
-    // FInds the midpoint between pt0 and pt2.
+    // Finds the midpoint between pt0 and pt2.
     NSNumber* pt1 = [NSNumber numberWithDouble: ([pt0 doubleValue] + [pt2 doubleValue])/2 ];
     
-    // Calculates the left side of the interval.
+    // Calculates the left side of the interval using simpson's rule.
     NSNumber* left  = [self simpsonsRuleWithStart:pt0 AndFinish:pt1];
     
-    // Calculates the right side of the interval.
+    // Calculates the right side of the interval using simpson's rule.
     NSNumber* right = [self simpsonsRuleWithStart:pt1 AndFinish:pt2];
     
-    // Calculates the difference between the two current halves and the previous whole.
+    // Calculates the difference between the two current halves (together) and the previous whole.
     NSNumber* CurrentPreviousDifference = [NSNumber numberWithDouble:
-                                           ([left doubleValue]+[right doubleValue]-[previousCalculation doubleValue]) ];
+                                           ( [left doubleValue]+[right doubleValue]-[previousCalculation doubleValue] ) ];
     
     // Compares the difference with the error term. If less than or equal to...
     if ( fabs([CurrentPreviousDifference doubleValue]) <= (15.0*[eps doubleValue]) )
     {
-        // Calculates the result.
+        // ... calculate the result.
         NSNumber* result = [NSNumber numberWithDouble:
                             ( [left doubleValue]+[right doubleValue]+[CurrentPreviousDifference doubleValue]/15 ) ];
         
@@ -109,13 +129,13 @@
     }
     
     // Else...
-    // We will recursively try to find a better solution for the left half...
+    // We will recursively try to find a better solution for the left half of the interval...
     NSNumber* leftRecursion = [self recursiveASRfromPt:pt0
                                                   ToPt:pt1
                                                WithEps:[NSNumber numberWithDouble:[self.error doubleValue]/2]
                                        AndPreviousCalc:left];
     
-    // And the right half.
+    // ... and the right half of the interval.
     NSNumber* rightRecursion = [self recursiveASRfromPt:pt1
                                                    ToPt:pt2
                                                 WithEps:[NSNumber numberWithDouble:[self.error doubleValue]/2]
@@ -167,7 +187,8 @@
      */
     
     // Manually coded function definition.
-    NSNumber* functionValueAtX = [NSNumber numberWithDouble: cos(pow([x doubleValue], 2)) ];
+    // 1 + e^(-x)*sin(8x^(⅔))
+    NSNumber* functionValueAtX = [NSNumber numberWithDouble: 1 + pow(M_E, -[x doubleValue]) * sin(8*pow([x doubleValue], 0.6666666666666)) ];
     
     // Returns the function value at point.
     return functionValueAtX;

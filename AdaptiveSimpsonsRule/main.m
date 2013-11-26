@@ -22,7 +22,7 @@ int main(int argc, const char * argv[])
     @autoreleasepool {
         
         NSNumber* pointA = [NSNumber numberWithDouble: 0 ];                 // Interval starting point value.
-        NSNumber* pointB = [NSNumber numberWithDouble: 4 ];                 // Interval stopping point value.
+        NSNumber* pointB = [NSNumber numberWithDouble: 2 ];                 // Interval stopping point value.
         NSNumber* error  = [NSNumber numberWithDouble: 1 * pow(10, -10) ];  // Error tolerance for ASR.
         
         // Allocate & intialize ASR object with start, stop, and error tolerance.
