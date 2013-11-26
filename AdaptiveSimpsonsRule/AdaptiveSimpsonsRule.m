@@ -20,17 +20,17 @@
 
 @interface AdaptiveSimpsonsRule ()
 
-// Recursive-adaptive logic method for ASR.
+// Recursive-adaptive logic method for ASR (pre-declaration).
 -(NSNumber*)recursiveASRfromPt:(NSNumber*)pt0
                           ToPt:(NSNumber*)pt2
                        WithEps:(NSNumber*)eps
                AndPreviousCalc:(NSNumber*)previousCalculation;
 
-// Simpson's Rule.
+// Simpson's Rule (pre-declaration).
 -(NSNumber*)simpsonsRuleWithStart:(NSNumber*)x_0
                         AndFinish:(NSNumber*)x_2;
 
-// The function being approximated by ASR.
+// The function being approximated by ASR (pre-declaration).
 -(NSNumber*)theFunctionValueAtPoint:(NSNumber*)x;
 
 @end
@@ -97,7 +97,11 @@
 
 /*
  METHOD: recursiveASRfromPt: ToPt: WithEps: AndPreviousCalc:
- 
+ This is the recursive logic for ASR. It receives an interval, error tolerance, and a previous calculationg. Then
+ it breaks the interval into left and right halves, performs Simpson's Rule on each, compares the results of the
+ left plus the right with the previous calculation. If this comparison difference is less than the error tolerance
+ then the result is calculated & returned. Else, this method is recursively called for both the left & right halves.
+ The left & right recursion results are then summed and returned.
  */
 -(NSNumber*)recursiveASRfromPt:(NSNumber*)pt0
                           ToPt:(NSNumber*)pt2
@@ -145,6 +149,12 @@
     return [NSNumber numberWithDouble:[leftRecursion doubleValue]+[rightRecursion doubleValue]];
 }
 
+/*
+ METHOD: simpsonRulesWithStart: AndFinish:
+ This is the standard definition of Simpson's Rule. It takes an interval, finds the midpoint, calculates
+ the function value at all 3 points (start, mid, & stop), and returns the weight average approximation of
+ integral within the received interval.
+ */
 -(NSNumber*)simpsonsRuleWithStart:(NSNumber*)x_0
                         AndFinish:(NSNumber*)x_2
 {
@@ -173,11 +183,17 @@
     return approximation;
 }
 
+/*
+ METHOD: theFunctionValueAtPoint:
+ Receives x-value for a point, calculates & returns y-value ( f(x) ) using a hard-coded function definition.
+ There can be an error checking feature. Needs to implemented along with the function definition.
+ */
 -(NSNumber*)theFunctionValueAtPoint:(NSNumber*)x
 {
-    // ERROR CHECK: If function cannot handle certain operations (e.g. dividing by zero) test for
-    // that here, print error message, and quit program. Must be updated along with the function
-    // definition. Function MAY NOT NEED this error checking feature.
+    // ERROR CHECK:
+    // If function cannot handle certain operations (e.g. dividing by zero) test for
+    // that here, print error message, and quit program. Must be updated along with
+    // the function definition. Function MAY NOT NEED this error checking feature.
     
     /*
     if ( fabs([x doubleValue]) < (1*pow(10,-10)) )
@@ -186,9 +202,9 @@
     }
      */
     
+    // FUNCITON DEFINITION:
     // Manually coded function definition.
-    // 1 + e^(-x)*sin(8x^(⅔))
-    NSNumber* functionValueAtX = [NSNumber numberWithDouble: 1 + pow(M_E, -[x doubleValue]) * sin(8*pow([x doubleValue], 0.6666666666666)) ];
+    NSNumber* functionValueAtX = [NSNumber numberWithDouble: /* FUNCTION DEFINITION GOES HERE! */ ];
     
     // Returns the function value at point.
     return functionValueAtX;

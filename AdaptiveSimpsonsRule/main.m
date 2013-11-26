@@ -32,7 +32,7 @@ int main(int argc, const char * argv[])
         
         // ASR object sends message to approximate the integral of the function
         // (whose definition is hard coded in implementation file).
-        // NSNumber object stores the approximation.
+        // NSNumber object then stores the approximation.
         NSNumber* approximation = [ASR approximateUsingAdaptiveSimpsonsRule];
         
         // Log that displays the approximation's value to the terminal.
