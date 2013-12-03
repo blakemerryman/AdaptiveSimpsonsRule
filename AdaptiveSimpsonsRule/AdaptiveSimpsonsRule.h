@@ -27,8 +27,12 @@
 #pragma mark - Public Methods Interface:
 // Default initialization method.
 -(id)init;
+
 // Initialization methods that sets the interval start, end, and error tolerance.
--(id)initWithPtA:(NSNumber*)ptA WithPtB:(NSNumber*)ptB AndEpsilon:(NSNumber*)eps;
+-(id)initWithPtA:(NSNumber*)ptA
+         WithPtB:(NSNumber*)ptB
+      AndEpsilon:(NSNumber*)eps;
+
 // Method that returns the approximation of the integral found using ASR.
 -(NSNumber*)approximateUsingAdaptiveSimpsonsRule;
 

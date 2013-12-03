@@ -22,11 +22,11 @@ int main(int argc, const char * argv[])
 {
     @autoreleasepool {
         
-        NSNumber* pointA = [NSNumber numberWithDouble: 0 ]; // Interval starting point value.
-        NSNumber* pointB = [NSNumber numberWithDouble: 2 ]; // Interval stopping point value.
+        NSNumber* pointA = [NSNumber numberWithDouble: 0  ]; // Interval starting point value.
+        NSNumber* pointB = [NSNumber numberWithDouble: 10 ]; // Interval stopping point value.
         
         // Error tolerance for ASR.
-        NSNumber* error  = [NSNumber numberWithDouble: 1 * pow(10, -10) ];
+        NSNumber* error  = [NSNumber numberWithDouble: pow(10, -7) ]; // Breaks before -7.67
         
         // Allocate & intialize ASR object with start, stop, and error tolerance.
         AdaptiveSimpsonsRule* ASR = [[AdaptiveSimpsonsRule alloc] initWithPtA:pointA

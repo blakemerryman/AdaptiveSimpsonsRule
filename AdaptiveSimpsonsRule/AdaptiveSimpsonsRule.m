@@ -89,7 +89,7 @@
     NSNumber* finalApproximation = [self recursiveASRfromPt:self.pointA
                                                        ToPt:self.pointB
                                                     WithEps:self.error
-                                            AndPreviousCalc:initialApproximation];
+                                            AndPreviousCalc:initialApproximation ];
     
     // Returns the final approximation.
     return finalApproximation;
@@ -114,7 +114,7 @@
                AndPreviousCalc:(NSNumber*)previousCalculation
 {
     // Finds the midpoint between pt0 and pt2.
-    NSNumber* pt1 = [NSNumber numberWithDouble: ([pt0 doubleValue] + [pt2 doubleValue])/2 ];
+    NSNumber* pt1 = [NSNumber numberWithDouble: ([pt0 doubleValue] + [pt2 doubleValue]) / 2 ];
     
     // Calculates the left side of the interval using simpson's rule.
     NSNumber* left  = [self simpsonsRuleWithStart:pt0 AndFinish:pt1];
@@ -125,18 +125,17 @@
     // Calculates the difference between the two current halves (together)
     // and the previous whole.
     NSNumber* CurrentPreviousDifference = [NSNumber numberWithDouble:
-                                           ( [left doubleValue]
-                                            +[right doubleValue]
-                                            -[previousCalculation doubleValue] ) ];
+                                           ( [left doubleValue] + [right doubleValue]
+                                            - [previousCalculation doubleValue] ) ];
     
     // Compares the difference with the error term. If less than or equal to...
     if ( fabs([CurrentPreviousDifference doubleValue]) <= (15.0*[eps doubleValue]) )
     {
         // ... calculate the result.
         NSNumber* result = [NSNumber numberWithDouble:
-                            ( [left doubleValue]
+                            ( [left  doubleValue]
                              +[right doubleValue]
-                             +[CurrentPreviousDifference doubleValue]/15 ) ];
+                             +[CurrentPreviousDifference doubleValue] / 15.0 ) ];
         
         // Returns the result to calling method.
         return result;
@@ -147,18 +146,18 @@
     NSNumber* leftRecursion = [self recursiveASRfromPt:pt0
                                                   ToPt:pt1
                                                WithEps:[NSNumber numberWithDouble:
-                                                        [self.error doubleValue]/2]
+                                                        [eps doubleValue]/2.0]
                                        AndPreviousCalc:left];
     
     // ... and the right half of the interval.
     NSNumber* rightRecursion = [self recursiveASRfromPt:pt1
                                                    ToPt:pt2
                                                 WithEps:[NSNumber numberWithDouble:
-                                                         [self.error doubleValue]/2]
+                                                         [eps doubleValue]/2.0]
                                         AndPreviousCalc:right];
     
     // Combines and returns the two recursive results.
-    return [NSNumber numberWithDouble:[leftRecursion doubleValue]+[rightRecursion doubleValue]];
+    return [NSNumber numberWithDouble: [leftRecursion doubleValue]+[rightRecursion doubleValue] ];
 }
 
 /*
@@ -176,7 +175,7 @@
     NSNumber* x_1 = [NSNumber numberWithDouble: ([x_0 doubleValue] + [x_2 doubleValue]) / 2.0];
     
     // Calculates the leading h/6 term.
-    NSNumber* hOVER6 = [NSNumber numberWithDouble:fabs([x_0 doubleValue]-[x_2 doubleValue])/6.0];
+    NSNumber* hOVER6 = [NSNumber numberWithDouble: fabs([x_0 doubleValue]-[x_2 doubleValue])/6.0 ];
     
     // Evaluates the function value at point x_0 (interval start).
     NSNumber* functAtPntX_0 = [self theFunctionValueAtPoint:
@@ -192,9 +191,17 @@
     
     // Calculates the approximation of the integral between points x_0 and x_2.
     NSNumber* approximation = [NSNumber numberWithDouble:
-                                               [hOVER6 doubleValue] *([functAtPntX_0 doubleValue]
+                                               [hOVER6 doubleValue] * ( [functAtPntX_0 doubleValue]
                                                + 4.0 * [functAtPntX_1 doubleValue]
-                                               + [functAtPntX_2 doubleValue])];
+                                               + [functAtPntX_2 doubleValue] ) ];
+    
+    /*
+    // Checks to see if approximation should be considered "zero"...
+    if ( fabs([approximation doubleValue]) < pow(10, -10) )
+    {
+        return [NSNumber numberWithDouble:0.0];
+    }
+    */
     
     // Returns the approximation.
     return approximation;
@@ -223,11 +230,9 @@
     
     // FUNCITON DEFINITION:
     // Manually coded function definition.
-    NSNumber* functionValueAtX = [NSNumber numberWithDouble:
-                                  
-                                  /* INTENTIONALLY BLANK: FUNCTION DEFINITION GOES HERE! */
-                                  
-                                  ];
+     NSNumber* functionValueAtX = [NSNumber numberWithDouble: pow(M_E, pow(-[x doubleValue], 3)) * sin([x doubleValue]) ];
+    
+    //NSNumber* functionValueAtX = [NSNumber numberWithDouble: cos(pow([x doubleValue], 2)) ];
     
     // Returns the function value at point.
     return functionValueAtX;
