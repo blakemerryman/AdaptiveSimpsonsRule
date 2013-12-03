@@ -26,7 +26,7 @@ int main(int argc, const char * argv[])
         NSNumber* pointB = [NSNumber numberWithDouble: 10 ]; // Interval stopping point value.
         
         // Error tolerance for ASR.
-        NSNumber* error  = [NSNumber numberWithDouble: pow(10, -7) ]; // Breaks before -7.67
+        NSNumber* error  = [NSNumber numberWithDouble: 1 * pow(10, -7.66) ]; // Breaks just before -7.67
         
         // Allocate & intialize ASR object with start, stop, and error tolerance.
         AdaptiveSimpsonsRule* ASR = [[AdaptiveSimpsonsRule alloc] initWithPtA:pointA
